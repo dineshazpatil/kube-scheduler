@@ -1,0 +1,15 @@
+# kubectl label node vl-kube02 noCustomScheduler=yes
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: annotation-second-scheduler2
+  labels:
+    name: multischeduler-example
+    schedulingStrategy: meetup
+    serviceName: annotation-second-scheduler
+spec:
+  schedulerName: my-scheduler
+  containers:
+  - name: pod-with-second-annotation-container
+    image: k8s.gcr.io/pause:2.0
